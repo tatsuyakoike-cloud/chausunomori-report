@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="茶臼の森の方針を、図と数字だけで短くまとめた版。">
+  <meta name="theme-color" content="#193529">
+  <title>茶臼の森｜ひと目でわかる方針</title>
+  <style>
+    :root{
+      --forest:#193529;--pine:#2c5340;--sage:#6e866d;--moss:#d7e2cc;
+      --cream:#f4f0e4;--paper:#fffdf8;--ink:#1c2a22;--muted:#5c6b62;
+      --gold:#c6a15a;--gold-2:#f3e2bc;--ember:#c45b3e;--ember-2:#f8e4dc;
+      --sky:#3d6278;--line:#e3e0d4;
+      --serif:Georgia,"Yu Mincho","Hiragino Mincho ProN",serif;
+      --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;overflow-x:clip}
+    a{color:inherit}
+    img,svg{display:block;max-width:100%}
+    button,input{font:inherit}
+    section[id]{scroll-margin-top:72px}
+    .nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
+    .nav-row{display:flex;gap:0;overflow-x:auto;white-space:nowrap;scrollbar-width:none;width:min(1080px,100%);margin:auto;padding:0 8px}
+    .nav-row::-webkit-scrollbar{display:none}
+    .nav a{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;text-decoration:none;font-weight:700;font-size:.92rem;color:var(--muted);border-bottom:3px solid transparent}
+    .nav a:hover,.nav a.is-active{color:var(--forest);border-bottom-color:var(--gold)}
+    .hero{background:radial-gradient(circle at 80% 20%,rgba(243,226,188,.18),transparent 28%),linear-gradient(160deg,#12261c 0%,#234735 70%);color:var(--paper);overflow:hidden}
+    .hero-grid{width:min(1080px,calc(100% - 40px));margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;min-height:560px;padding:36px 0 28px}
+    .eyebrow{font-size:.72rem;letter-spacing:.18em;font-weight:700;color:var(--gold)}
+    h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:.04em;line-height:1.25;word-break:auto-phrase;line-break:strict}
+    h1{font-size:clamp(2.4rem,6vw,4.4rem);margin:12px 0 16px}
+    h1 span{display:block;color:#f3e2bc}
+    .hero p{max-width:28rem;margin:0;font-size:1.05rem;color:#e7eee4}
+    .legend{display:flex;gap:16px;margin-top:28px;font-size:.78rem;color:#d5ddcf}
+    .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
+    .dot-fact{background:#9dbe98}
+    .dot-read{background:var(--gold)}
+    .scene{width:min(100%,520px);margin-left:auto}
+    .band{width:min(1080px,calc(100% - 40px));margin:auto;padding:72px 0}
+    h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 8px}
+    .lead{margin:0 0 28px;color:var(--muted);max-width:36rem}
+    .mark{font-size:.72rem;font-weight:700;letter-spacing:.14em}
+    .mark-fact{color:var(--pine)}
+    .mark-read{color:#8a5a32}
+    .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{border-radius:18px;padding:22px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+    .card h3{margin:14px 0 6px;font-size:1.35rem;font-family:var(--serif);font-weight:500}
+    .card p{margin:0;color:inherit;opacity:.85}
+    .card-forest{background:var(--forest);color:var(--paper)}
+    .card-ember{background:#7d3b2c;color:#fff6f1}
+    .card-morning{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+    .icon{width:64px;height:64px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .stat{background:var(--paper);border-radius:18px;padding:22px 18px;border-top:6px solid var(--pine);min-height:170px}
+    .stat b{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:500;line-height:1.1;color:var(--forest);white-space:nowrap}
+    .stat span{display:block;margin-top:10px;color:var(--muted);font-size:.88rem}
+    .stat.warn{border-top-color:var(--ember)}
+    .stat.warn b{color:var(--ember)}
+    .chart{background:var(--paper);border-radius:18px;padding:22px;margin-top:14px}
+    .chart h3{margin:0 0 16px;font-size:1rem}
+    .bar{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;margin-top:12px}
+    .track{height:22px;background:#ece7da;border-radius:99px;overflow:hidden}
+    .fill{height:100%;border-radius:99px;background:var(--sage)}
+    .fill.now{background:var(--pine)}
+    .bar strong{font-variant-numeric:tabular-nums}
+    .delta{margin:14px 0 0;font-weight:700;color:var(--pine)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    .panel{border-radius:18px;padding:28px;min-height:220px}
+    .panel.bad{background:var(--ember-2)}
+    .panel.ok{background:var(--moss)}
+    .panel b{display:block;font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:500;line-height:1}
+    .panel p{margin:10px 0 0}
+    .rings{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .ring-card{background:var(--paper);border-radius:18px;padding:18px;text-align:center}
+    .ring{width:132px;height:132px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--pine) calc(var(--p) * 1%),#e7ecdf 0)}
+    .ring i{width:92px;height:92px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font-style:normal;font-family:var(--serif);font-size:1.35rem;color:var(--forest)}
+    .ring-card strong{display:block}
+    .ring-card span{color:var(--muted);font-size:.82rem}
+    .note{margin:14px 0 0;color:var(--muted);font-size:.82rem}
+    .map{display:grid;grid-template-columns:1fr 1fr;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+    .cell{min-height:180px;padding:20px}
+    .cell:nth-child(odd){border-right:1px solid var(--line)}
+    .cell:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .cell small{display:block;color:var(--muted);font-weight:700;letter-spacing:.08em;margin-bottom:10px}
+    .chip{display:inline-block;margin:4px 6px 0 0;padding:6px 10px;border-radius:999px;background:#f3f1e8;font-size:.85rem}
+    .cell.goal{background:var(--forest);color:var(--paper)}
+    .cell.goal small,.cell.goal .chip{color:var(--forest);background:var(--gold-2)}
+    .axis{display:flex;justify-content:space-between;gap:12px;margin-top:10px;color:var(--muted);font-size:.8rem;font-weight:700}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .step{background:var(--paper);border-radius:18px;padding:22px;position:relative}
+    .num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--forest);color:var(--paper);font-family:var(--serif);font-size:1.3rem}
+    .step h3{margin:14px 0 6px;font-family:var(--serif);font-weight:500;font-size:1.3rem}
+    .step p{margin:0;color:var(--muted)}
+    .step.later .num{background:#efe8d8;color:var(--ink)}
+    .money{margin-top:14px;background:var(--forest);color:var(--paper);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .money b{display:block;font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:500;color:#f3e2bc;line-height:1}
+    .money span{display:block;margin-top:8px;color:#d7e0d4}
+    .fixes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .fix{background:var(--paper);border-radius:18px;padding:22px;border-left:8px solid var(--ember)}
+    .fix h3{margin:0 0 12px;font-family:var(--serif);font-weight:500}
+    .prices{display:flex;flex-wrap:wrap;gap:8px}
+    .price{background:var(--ember-2);border-radius:12px;padding:10px 12px;min-width:96px}
+    .price b{display:block;font-family:var(--serif);font-size:1.45rem;font-weight:500}
+    .price span{font-size:.75rem;color:var(--muted)}
+    .months{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+    .month{background:var(--paper);padding:24px 20px 28px;border-top:8px solid var(--gold)}
+    .month:nth-child(2){border-top-color:var(--pine)}
+    .month:nth-child(3){border-top-color:var(--sky)}
+    .month + .month{border-left:1px solid var(--line)}
+    .month em{font-style:normal;font-family:var(--serif);font-size:1.8rem}
+    .month ul{margin:12px 0 0;padding-left:1.1em}
+    .month li+li{margin-top:6px}
+    .footer{background:var(--forest);color:#d5ddcf;padding:28px 0 calc(28px + env(safe-area-inset-bottom));font-size:.85rem}
+    .footer .band{padding:0}
+    .footer a{color:#f3e2bc}
+    @media(max-width:800px){
+      .hero-grid,.trio,.stats,.rings,.split,.steps,.money,.fixes,.months{grid-template-columns:1fr 1fr}
+      .hero-grid{min-height:0;padding-top:28px}
+      .scene{margin:0 auto}
+      .months{grid-template-columns:1fr}
+      .month + .month{border-left:0;border-top:8px solid var(--pine)}
+      .month:nth-child(3){border-top-color:var(--sky)}
+    }
+    @media(max-width:640px){
+      .band{width:min(100% - 32px,1080px);padding:52px 0}
+      .hero-grid{width:min(100% - 32px,1080px);grid-template-columns:1fr}
+      .trio,.stats,.rings,.split,.steps,.money,.fixes{grid-template-columns:1fr}
+      .nav a{padding:0 12px;font-size:.86rem}
+      .cell{min-height:0}
+      .ring{width:112px;height:112px}
+      .ring i{width:78px;height:78px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="目次">
+    <div class="nav-row">
+      <a href="#promise">結論</a>
+      <a href="#numbers">数字</a>
+      <a href="#guest">お客</a>
+      <a href="#position">競合</a>
+      <a href="#actions">やること</a>
+      <a href="#plan">予定</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="promise">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">茶臼の森 · 方針</div>
+        <h1>森で、<span>炭火で、朝を。</span></h1>
+        <p>設備を増やして勝たない。独立した一棟と、炭火の夜と、自分たちの朝。この3つを揃える。</p>
+        <div class="legend"><span><i class="dot dot-fact"></i>事実</span><span><i class="dot dot-read"></i>仮説・提案</span></div>
+      </div>
+      <svg class="scene" viewBox="0 0 640 460" aria-hidden="true">
+        <ellipse cx="330" cy="390" rx="250" ry="28" fill="#0e1c15" opacity=".35"/>
+        <path d="M40 340h560" stroke="#d7e2cc" stroke-width="2" opacity=".25"/>
+        <g fill="#163226">
+          <path d="M70 360 118 150l48 210z"/><rect x="110" y="210" width="16" height="150"/>
+          <path d="M150 370 206 120l56 250z"/><rect x="196" y="190" width="18" height="180"/>
+          <path d="M470 365 524 150l54 215z"/><rect x="514" y="210" width="16" height="155"/>
+          <path d="M540 372 586 190l46 182z"/><rect x="578" y="240" width="14" height="132"/>
+        </g>
+        <g>
+          <rect x="230" y="214" width="196" height="150" rx="4" fill="#6a4632"/>
+          <path d="M214 222 328 132l114 90" fill="#3d2a20"/>
+          <rect x="248" y="232" width="160" height="16" rx="8" fill="#8a5d42"/>
+          <rect x="248" y="258" width="160" height="16" rx="8" fill="#7b533c"/>
+          <rect x="248" y="284" width="160" height="16" rx="8" fill="#8a5d42"/>
+          <rect x="302" y="300" width="48" height="64" rx="3" fill="#2a1b14"/>
+          <rect x="258" y="250" width="34" height="28" rx="2" fill="#f3d48a"/>
+          <rect x="360" y="250" width="34" height="28" rx="2" fill="#f3d48a"/>
+          <rect x="392" y="176" width="16" height="46" fill="#4a3428"/>
+          <circle cx="400" cy="164" r="8" fill="#efe6d4" opacity=".7"/>
+          <circle cx="412" cy="146" r="11" fill="#efe6d4" opacity=".45"/>
+          <circle cx="424" cy="124" r="14" fill="#efe6d4" opacity=".25"/>
+        </g>
+        <g transform="translate(250 348)">
+          <ellipse cx="70" cy="36" rx="54" ry="10" fill="#1a120e"/>
+          <path d="M48 34c8-28 18-28 22 0" fill="#e7b15a"/>
+          <path d="M70 36c6-36 20-36 22 0" fill="#c45b3e"/>
+          <path d="M86 34c8-22 16-20 16 2" fill="#f3d48a"/>
+        </g>
+      </svg>
+    </div>
+  </header>
+
+  <section>
+    <div class="band">
+      <p class="mark mark-read">仮説・提案</p>
+      <h2>覚えてもらう中身は、3つ。</h2>
+      <div class="trio">
+        <article class="card card-forest">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 44 28H20zM32 16 50 42H14z" fill="#d7e2cc"/><rect x="29" y="40" width="6" height="16" fill="#c6a15a"/></svg>
+          <div><h3>森の一棟</h3><p>隣と離れたログハウス。</p></div>
+        </article>
+        <article class="card card-ember">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6c8 12 4 18 8 26 6 12-2 26-8 26s-16-12-8-26c6-8 2-16 8-26z" fill="#f3d48a"/><path d="M32 24c4 8 2 12 4 16 2 6-2 12-4 12s-8-6-4-14c2-4 1-8 4-14z" fill="#c45b3e"/></svg>
+          <div><h3>炭火の夜</h3><p>口コミに、すでに残っている。</p></div>
+        </article>
+        <article class="card card-morning">
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 28h28v6a14 14 0 0 1-28 0z" fill="none" stroke="#193529" stroke-width="3"/><path d="M24 28c0-8 16-8 16 0" fill="none" stroke="#193529" stroke-width="3"/><path d="M32 14c2 4 2 6 0 8" fill="none" stroke="#c6a15a" stroke-width="3" stroke-linecap="round"/></svg>
+          <div><h3>自分たちの朝</h3><p>これから整える。手挽きの一杯。</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="numbers">
+    <div class="band">
+      <p class="mark mark-fact">事実</p>
+      <h2>数字は、こうなっている。</h2>
+      <div class="stats">
+        <article class="stat"><b>205.7<span style="font-size:.5em">万人</span></b><span>2025年、那須町の宿泊。前年より +3.3%</span></article>
+        <article class="stat"><b>+12.7%</b><span>茶臼の森の売上。2025年3〜12月は前年の同じ月より上</span></article>
+        <article class="stat warn"><b>46.7%</b><span>2026年6月末までのじゃらん売上。前年の同時期と比べた割合</span></article>
+        <article class="stat"><b>5棟</b><span>4タイプの、独立したコテージ</span></article>
+      </div>
+      <div class="chart">
+        <h3>比べられる10か月の売上</h3>
+        <div class="bar"><span>2024</span><div class="track"><div class="fill" style="width:88.7%"></div></div><strong>2,078.8万</strong></div>
+        <div class="bar"><span>2025</span><div class="track"><div class="fill now" style="width:100%"></div></div><strong>2,342.4万</strong></div>
+        <p class="delta">+263.6万円。10か月のうち9か月が前年を超えた。</p>
+      </div>
+      <div class="split">
+        <article class="panel bad">
+          <p class="mark">じゃらん</p>
+          <b>46.7%</b>
+          <p>前年の半分を切っている。</p>
+        </article>
+        <article class="panel ok">
+          <p class="mark">エリアの目安</p>
+          <b>89.4%</b>
+          <p>周りは、そこまで落ちていない。</p>
+        </article>
+      </div>
+      <p class="note mark-read">仮説：この差は、市場全体のせいだけでは説明しにくい。販路ごとに見る。</p>
+    </div>
+  </section>
+
+  <section id="guest">
+    <div class="band">
+      <p class="mark mark-fact">事実</p>
+      <h2>来ている人の形。</h2>
+      <div class="rings">
+        <article class="ring-card"><div class="ring" style="--p:52.5"><i>52.5%</i></div><strong>2人</strong><span>那須エリアの同行人数</span></article>
+        <article class="ring-card"><div class="ring" style="--p:92.3"><i>92.3%</i></div><strong>車</strong><span>自家用車などで来る</span></article>
+        <article class="ring-card"><div class="ring" style="--p:64.6"><i>64.6%</i></div><strong>再訪</strong><span>周辺へ5回目以上</span></article>
+        <article class="ring-card"><div class="ring" style="--p:66.9"><i>66.9%</i></div><strong>首都圏</strong><span>茶臼の森の住所データ</span></article>
+      </div>
+      <p class="note">上の3つは那須エリア339人の調査で、茶臼の森の宿泊客そのものではない。66.9%は連絡先約1万件のうち東京・埼玉・千葉・神奈川。</p>
+      <p class="note mark-read">仮説：入口は、首都圏から車で来る2人旅。年齢や夫婦かどうかは、まだ分からない。</p>
+    </div>
+  </section>
+
+  <section id="position">
+    <div class="band">
+      <p class="mark mark-read">仮説</p>
+      <h2>設備の数では、並ばない。</h2>
+      <p class="lead">公式サイトに書いてある中身で置くと、茶臼の森の狙いは右上。</p>
+      <div class="map">
+        <div class="cell"><small>左上 · 施設が用意する</small><span class="chip">那須ハミルの森</span><span class="chip">Nenn</span></div>
+        <div class="cell goal"><small>右上 · 目指す場所</small><span class="chip">茶臼の森</span><span class="chip">炭火と朝</span></div>
+        <div class="cell"><small>左下 · レジャーとセット</small><span class="chip">TOWA</span></div>
+        <div class="cell"><small>右下 · 今の見え方</small><span class="chip">ヴィラージュ</span><span class="chip">自由な貸別荘</span></div>
+      </div>
+      <div class="axis"><span>← 施設が体験を用意</span><span>自分たちで過ごす →</span></div>
+    </div>
+  </section>
+
+  <section id="actions">
+    <div class="band">
+      <p class="mark mark-read">提案</p>
+      <h2>足す順番。</h2>
+      <div class="steps">
+        <article class="step"><div class="num">1</div><h3>先に直す</h3><p>寝具、水、明かり。発信より先。</p></article>
+        <article class="step"><div class="num">2</div><h3>朝を足す</h3><p>豆だけ置かない。挽いて、淹れて、片づくセット。</p></article>
+        <article class="step later"><div class="num">3</div><h3>世界観はあと</h3><p>器とレコードは、小さく試す。</p></article>
+      </div>
+      <div class="money">
+        <div><b>25万円</b><span>基本の初期費用。掲載価格と仮予算を足した案。</span></div>
+        <div><b>22件</b><span>仮定。1予約2万円のうち6割が残るなら、この件数で戻る。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan">
+    <div class="band">
+      <p class="mark mark-fact">事実 · いま食い違っている</p>
+      <h2>先に、値段を一つにする。</h2>
+      <div class="fixes">
+        <article class="fix">
+          <h3>暖房費</h3>
+          <div class="prices">
+            <div class="price"><b>2,000円</b><span>レッドの説明・楽天</span></div>
+            <div class="price"><b>2,200円</b><span>ファミリープラン</span></div>
+          </div>
+          <p class="note">11月1日より前に揃える予定。</p>
+        </article>
+        <article class="fix">
+          <h3>BBQレンタル</h3>
+          <div class="prices">
+            <div class="price"><b>2,500円〜</b><span>公式サイト</span></div>
+            <div class="price"><b>2,000円〜</b><span>予約サイト</span></div>
+            <div class="price"><b>1,800円〜</b><span>楽天</span></div>
+          </div>
+          <p class="note">金額も、セットの中身も揃っていない。</p>
+        </article>
+      </div>
+      <div class="block" style="margin-top:36px">
+        <p class="mark mark-read">予定 · 10月5日〜12月25日 · いまは全部未着手</p>
+        <h2 style="margin-top:8px">3か月の流れ。</h2>
+      </div>
+      <div class="months">
+        <article class="month"><em>10月</em><ul><li>暖房費とBBQの値段を一つに</li><li>10/6 楽天と会う</li><li>クーポンはまだ2,000円。1,000円にするかは未決定</li></ul></article>
+        <article class="month"><em>11月</em><ul><li>じゃらんの掲載を直す</li><li>楽天の掲載を直す</li><li>予約ページと公式の食い違いを突合</li></ul></article>
+        <article class="month"><em>12月</em><ul><li>他の予約サイトを点検</li><li>動画を公式へ</li><li>SNSのリンクを足す</li></ul></article>
+      </div>
+      <p class="note">資料待ちの日は仮の日付。着いたら前倒し、または後ろにずらす。</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="band">
+      <p>数字の詳しい版と出典は、<a href="../">事業ポジショニング・投資判断レポート</a>。</p>
+      <p>那須町の宿泊数、売上資料、栃木県の観光調査、各公式サイト、予約画面。2026年10月4日時点。個人の顧客名簿は載せていない。</p>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      const nav=document.querySelector(".nav");
+      const scroller=nav.querySelector(".nav-row");
+      const links=[...nav.querySelectorAll("a")];
+      const sections=links.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+      let last=null;
+      function spy(){
+        const line=nav.offsetHeight+16;
+        let current=null;
+        for(const s of sections){if(s.getBoundingClientRect().top<=line)current=s}
+        links.forEach(a=>a.classList.toggle("is-active",!!current&&a.getAttribute("href")==="#"+current.id));
+        if(current&&current!==last){
+          last=current;
+          const active=scroller.querySelector(".is-active");
+          if(!active)return;
+          const left=active.offsetLeft, right=left+active.offsetWidth;
+          if(left<scroller.scrollLeft+8||right>scroller.scrollLeft+scroller.clientWidth-8){
+            scroller.scrollTo({left:Math.max(0,left-12),behavior:"smooth"});
+          }
+        }
+      }
+      document.addEventListener("scroll",spy,{passive:true});
+      spy();
+    })();
+  </script>
+</body>
+</html>

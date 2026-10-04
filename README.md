@@ -2,6 +2,8 @@
 
 公開ページ: https://tatsuyakoike-cloud.github.io/chausunomori-report/
 
+ひと目でわかる短い版: https://tatsuyakoike-cloud.github.io/chausunomori-report/visual/
+
 `index.html` だけで表示できる単一ファイルのレポートです。外部ライブラリ、画像ホットリンク、ビルド作業は不要です。目次はページ最上部に固定しています。スマホ幅では目次を横に送り、費用はカードで読み、ポジショニングマップは横スクロールで2軸の配置を保てます。スケジュールは「調査結果・修正箇所と改善スケジュール」の確認事項と作業予定です。
 
 ## 公開
