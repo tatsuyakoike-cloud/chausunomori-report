@@ -31,8 +31,8 @@
     .hero-grid{width:min(1080px,calc(100% - 40px));margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;min-height:560px;padding:36px 0 28px}
     .eyebrow{font-size:.72rem;letter-spacing:.18em;font-weight:700;color:var(--gold)}
     h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:.04em;line-height:1.25;word-break:auto-phrase;line-break:strict}
-    h1{font-size:clamp(2.4rem,6vw,4.4rem);margin:12px 0 16px}
-    h1 span{display:block;color:#f3e2bc}
+    h1{font-size:clamp(1.7rem,3.4vw,2.7rem);margin:12px 0 16px;letter-spacing:.02em;word-break:keep-all}
+    h1 .line{display:block;white-space:nowrap}
     .hero p{max-width:28rem;margin:0;font-size:1.05rem;color:#e7eee4}
     .legend{display:flex;gap:16px;margin-top:28px;font-size:.78rem;color:#d5ddcf}
     .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
@@ -154,7 +154,7 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">茶臼の森</div>
-        <h1>ログハウスと炭火を、前に出していく。</h1>
+        <h1><span class="line">ログハウスと炭火を、</span><span class="line">前に出していく。</span></h1>
         <p>食事や温泉は足さない。口コミに残っている炭火と、分かれた棟を、予約の理由にする。寝具・水・明るさを見てから、朝のコーヒーを足す。</p>
         <div class="legend"><span><i class="dot dot-fact"></i>確認した数字</span><span><i class="dot dot-read"></i>こちらで置いた見方</span></div>
       </div>
